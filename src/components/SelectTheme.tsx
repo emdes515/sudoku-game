@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react'
 import { posibleThemes } from '../contexts/ThemeContext/themes'
-import { TPosibleThemeState } from '../contexts/ThemeContext/ThemeContext.type'
+import { TPosibleThemeState } from '../contexts/ThemeContext/ThemeContext.types'
 import { useThemeContext } from '../hooks/contextHooks/useThemeContext'
 
 const SelectTheme = () => {
@@ -15,7 +15,7 @@ const SelectTheme = () => {
 	return (
 		<select
 			onChange={setSelcetThemeHandler}
-			className="select select-primary select-sm absolute right-5 top-5 w-full max-w-[10rem]"
+			className="select select-primary select-sm absolute right-5 top-5 max-w-[10rem]"
 		>
 			<option disabled selected>
 				Select Theme

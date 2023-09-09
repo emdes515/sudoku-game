@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import {
-	TThemeContextProviderProps,
-	TThemeContext,
+	IThemeContextProviderProps,
+	IThemeContext,
 	TPosibleThemeState,
-} from './ThemeContext.type'
+} from './ThemeContext.types'
 
-export const ThemeContext = React.createContext({} as TThemeContext)
+export const ThemeContext = React.createContext({} as IThemeContext)
 
-const ThemeContextProvider = ({ children }: TThemeContextProviderProps) => {
+const ThemeContextProvider = ({ children }: IThemeContextProviderProps) => {
 	const [theme, setTheme] = useState<TPosibleThemeState>('cupcake')
 
 	return (
