@@ -1,16 +1,18 @@
-import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { useLogin } from './hooks/useLogin'
 import HelloToNewUser from './pages/HelloToNewUser'
+import SelectTheme from './components/SelectTheme'
+import { useThemeContext } from './hooks/contextHooks/useThemeContext'
 
 function App() {
+	const { theme } = useThemeContext()
 
 	return (
-		<Routes>
-			<Route path='/' element={
-				<HelloToNewUser />
-			}/>
-		</Routes>
+		<div data-theme={theme}>
+			<SelectTheme />
+			<Routes>
+				<Route path="/" element={<HelloToNewUser />} />
+			</Routes>
+		</div>
 	)
 }
 
