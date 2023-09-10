@@ -7,7 +7,7 @@ export interface IGameContextProviderProps {
 
 export interface IGameContext {
 	users: User[]
-	createNewUser: (username: string) => User | Error
+	createNewUser: (username: string) => User | Boolean
 	activeUserID: string
 	setActiveUserID: (value: string | ((prevValue: string) => string)) => void;
 }

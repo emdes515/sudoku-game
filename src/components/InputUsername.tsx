@@ -26,7 +26,11 @@ const InputUsername = () => {
 	) => {
 		if (!state) event.preventDefault()
 
-		createNewUser(username)
+		const newUser = createNewUser(username)
+
+		if(!newUser) {
+			event.preventDefault()	
+		}
 	}
 
 	return (

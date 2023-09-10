@@ -4,6 +4,7 @@ import {
 	ICreateUsernameContextProviderProps,
 	IValidateUsername,
 } from './CreateUsernameContext.types'
+import { useGameContext } from '../../hooks/contextHooks/useGameContext'
 
 export const CreateUsernameContext = React.createContext(
 	{} as ICreateUsernameContext,
@@ -18,6 +19,7 @@ const CreateUsernameContextProvider = ({
 			state: 'empty',
 			message: 'Let us know your username',
 		})
+	const { users } = useGameContext()
 
 	const validateUsername = (usernameToValidate: string) => {
 		if (usernameToValidate.length < 3)
@@ -27,6 +29,18 @@ const CreateUsernameContextProvider = ({
 			}
 		if (usernameToValidate.length > 30)
 			return { state: false, message: 'Your username is too long' }
+
+		if (
+			users.some(
+				({ username: existingUsername }) =>
+					existingUsername === usernameToValidate,
+			)
+		)
+			return {
+				state: false,
+				message: `Username ${usernameToValidate} already exists`,
+			}
+
 		return { state: true, message: 'Just click enter to set this username' }
 	}
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { User } from '../../classes/User'
 import { IGameContext, IGameContextProviderProps } from './GameContext.types'
-import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts'
+import { useLocalStorage } from 'usehooks-ts'
 import { useNavigate } from 'react-router-dom'
 import { isAnyUserInLocalStoarge } from '../../utilities/isAnyUserInLocalStoarge'
 
@@ -23,14 +23,6 @@ const GameContextProvider = ({ children }: IGameContextProviderProps) => {
 	}, [activeUserID, users])
 
 	const createNewUser = (username: string) => {
-		if (
-			users.some(
-				({ username: existingUsername }) =>
-					existingUsername === username,
-			)
-		)
-			return new Error(`User ${username} already exists`)
-
 		const newUser = new User(username)
 
 		setUsers((currentGameObject) => [...currentGameObject, newUser])
