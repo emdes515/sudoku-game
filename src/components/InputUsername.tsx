@@ -1,5 +1,7 @@
-import React, { ChangeEvent } from 'react'
-import { useUsernameContext } from '../hooks/contextHooks/useUsernameContext'
+import { ChangeEvent, FormEvent } from 'react'
+import { useCreateUsernameContext } from '../hooks/contextHooks/useUsernameContext'
+import { setToLocalStorage } from '../utilities/localStorage'
+import { useGameContext } from '../hooks/contextHooks/useGameContext'
 
 const InputUsername = () => {
 	const {
@@ -7,9 +9,13 @@ const InputUsername = () => {
 		validateUsername,
 		setUsernameValidated,
 		usernameVaildated: { state },
-	} = useUsernameContext()
+	} = useCreateUsernameContext()
 
-	const changeUsernameHandler = ({
+	const {
+		createNewUser
+	} = useGameContext()
+
+	const changeEventInputUsernameHandler = ({
 		target: { value },
 	}: ChangeEvent<HTMLInputElement>) => {
 		const validated = validateUsername(value)
@@ -17,8 +23,16 @@ const InputUsername = () => {
 		if (validated.state) setUsername(value)
 	}
 
+	const submitEventFromUsernameHandler = (event: FormEvent<HTMLFormElement>) => {
+		if (!state) event.preventDefault()
+
+		const {target: {value}} = event
+
+		createNewUser(value)
+	}
+
 	return (
-		<form>
+		<form onSubmit={submitEventFromUsernameHandler}>
 			<input
 				id="input-username"
 				type="text"
@@ -30,7 +44,7 @@ const InputUsername = () => {
 						? 'input-success'
 						: 'input-error'
 				}`}
-				onChange={changeUsernameHandler}
+				onChange={changeEventInputUsernameHandler}
 			/>
 		</form>
 	)

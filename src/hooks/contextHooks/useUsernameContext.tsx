@@ -1,4 +1,4 @@
 import { useContext } from "react";
-import { UsernameContext } from "../../contexts/UsernameContext/UsernameContextProvider";
+import { CreateUsernameContext } from '../../contexts/UsernameContext/CreateUsernameContextProvider'
 
-export const useUsernameContext = () => useContext(UsernameContext)
+export const useCreateUsernameContext = () => useContext(CreateUsernameContext)

@@ -1,14 +1,13 @@
-import React from 'react'
 import InputUsername from '../components/InputUsername'
-import { useUsernameContext } from '../hooks/contextHooks/useUsernameContext'
+import { useCreateUsernameContext } from '../hooks/contextHooks/useUsernameContext'
 
 const HelloToNewUser = () => {
 	const {
 		usernameVaildated: { state, message },
-	} = useUsernameContext()
+	} = useCreateUsernameContext()
 
 	return (
-		<div className="relative mx-4 flex h-screen flex-col items-center justify-center">
+		<div className="mx-4 flex h-screen flex-col items-center justify-center">
 			<h1 className="my-10 text-center text-3xl font-bold sm:text-5xl">
 				Hello to Sudoku
 			</h1>

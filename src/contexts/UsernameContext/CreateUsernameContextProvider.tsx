@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import {
-	IUsernameContext,
-	IUsernameContextProviderProps,
+	ICreateUsernameContext,
+	ICreateUsernameContextProviderProps,
 	IValidateUsername,
-} from './UsernameContext.types'
+} from './CreateUsernameContext.types'
 
-export const UsernameContext = React.createContext({} as IUsernameContext)
+export const CreateUsernameContext = React.createContext(
+	{} as ICreateUsernameContext,
+)
 
-const UsernameContextProvider = ({
+const CreateUsernameContextProvider = ({
 	children,
-}: IUsernameContextProviderProps) => {
+}: ICreateUsernameContextProviderProps) => {
 	const [username, setUsername] = useState<string>('')
 	const [usernameVaildated, setUsernameValidated] =
 		useState<IValidateUsername>({
@@ -29,7 +31,7 @@ const UsernameContextProvider = ({
 	}
 
 	return (
-		<UsernameContext.Provider
+		<CreateUsernameContext.Provider
 			value={{
 				username,
 				setUsername,
@@ -39,8 +41,8 @@ const UsernameContextProvider = ({
 			}}
 		>
 			{children}
-		</UsernameContext.Provider>
+		</CreateUsernameContext.Provider>
 	)
 }
 
-export default UsernameContextProvider
+export default CreateUsernameContextProvider

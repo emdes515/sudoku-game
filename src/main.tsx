@@ -4,13 +4,16 @@ import App from './App.tsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import ThemeContextProvider from './contexts/ThemeContext/ThemeContext.tsx'
+import GameContextProvider from './contexts/GameContext/GameContextProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<ThemeContextProvider>
-				<App />
-			</ThemeContextProvider>
+			<GameContextProvider>
+				<ThemeContextProvider>
+					<App />
+				</ThemeContextProvider>
+			</GameContextProvider>
 		</BrowserRouter>
 	</React.StrictMode>,
 )

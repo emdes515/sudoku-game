@@ -4,7 +4,7 @@ import SelectTheme from './components/SelectTheme'
 import { useThemeContext } from './hooks/contextHooks/useThemeContext'
 import SvaedUsers from './pages/SvaedUsers'
 import { isUserInLocalStoarge } from './utilities/isUserInLocalStoarge'
-import UsernameContextProvider from './contexts/UsernameContext/UsernameContextProvider'
+import CreateUsernameContextProvider from './contexts/UsernameContext/CreateUsernameContextProvider'
 
 function App() {
 	const { theme } = useThemeContext()
@@ -19,9 +19,9 @@ function App() {
 						isUserInLocalStoarge() ? (
 							<SvaedUsers />
 						) : (
-							<UsernameContextProvider>
+							<CreateUsernameContextProvider>
 								<HelloToNewUser />
-							</UsernameContextProvider>
+							</CreateUsernameContextProvider>
 						)
 					}
 				/>

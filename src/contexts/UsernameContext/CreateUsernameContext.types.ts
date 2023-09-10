@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
-export interface IUsernameContextProviderProps {
+export interface ICreateUsernameContextProviderProps {
 	children: ReactNode
 }
 
-export interface IUsernameContext {
+export interface ICreateUsernameContext {
 	username: string
 	setUsername: React.Dispatch<React.SetStateAction<string>>
 	validateUsername: (usernameToValidate: string) => IValidateUsername
