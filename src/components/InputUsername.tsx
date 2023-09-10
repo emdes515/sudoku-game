@@ -1,19 +1,17 @@
 import { ChangeEvent, FormEvent } from 'react'
 import { useCreateUsernameContext } from '../hooks/contextHooks/useUsernameContext'
-import { setToLocalStorage } from '../utilities/localStorage'
 import { useGameContext } from '../hooks/contextHooks/useGameContext'
 
 const InputUsername = () => {
 	const {
 		setUsername,
+		username,
 		validateUsername,
 		setUsernameValidated,
 		usernameVaildated: { state },
 	} = useCreateUsernameContext()
 
-	const {
-		createNewUser
-	} = useGameContext()
+	const { createNewUser } = useGameContext()
 
 	const changeEventInputUsernameHandler = ({
 		target: { value },
@@ -23,12 +21,12 @@ const InputUsername = () => {
 		if (validated.state) setUsername(value)
 	}
 
-	const submitEventFromUsernameHandler = (event: FormEvent<HTMLFormElement>) => {
+	const submitEventFromUsernameHandler = (
+		event: FormEvent<HTMLFormElement>,
+	) => {
 		if (!state) event.preventDefault()
 
-		const {target: {value}} = event
-
-		createNewUser(value)
+		createNewUser(username)
 	}
 
 	return (

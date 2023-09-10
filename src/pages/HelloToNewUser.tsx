@@ -1,4 +1,5 @@
 import InputUsername from '../components/InputUsername'
+import { useGameContext } from '../hooks/contextHooks/useGameContext'
 import { useCreateUsernameContext } from '../hooks/contextHooks/useUsernameContext'
 
 const HelloToNewUser = () => {

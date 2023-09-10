@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
 	IThemeContextProviderProps,
 	IThemeContext,
@@ -9,7 +9,10 @@ import { useLocalStorage } from 'usehooks-ts'
 export const ThemeContext = React.createContext({} as IThemeContext)
 
 const ThemeContextProvider = ({ children }: IThemeContextProviderProps) => {
-	const [theme, setTheme] = useLocalStorage<TPosibleThemeState>('theme-withoutUser', 'cupcake')
+	const [theme, setTheme] = useLocalStorage<TPosibleThemeState>(
+		'theme',
+		'night',
+	)
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
