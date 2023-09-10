@@ -1,4 +1,4 @@
-const SvaedUsers = () => {
+const ChooseUser = () => {
 	return (
 		<div>
 			<h1>Saved Users</h1>
@@ -6,4 +6,4 @@ const SvaedUsers = () => {
 	)
 }
 
-export default SvaedUsers
+export default ChooseUser

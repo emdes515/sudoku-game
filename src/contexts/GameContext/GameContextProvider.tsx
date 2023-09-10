@@ -18,9 +18,8 @@ const GameContextProvider = ({ children }: IGameContextProviderProps) => {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		activeUserID && isAnyUserInLocalStoarge()
-			? navigate('/dashboard')
-			: navigate('/')
+		if(activeUserID || !isAnyUserInLocalStoarge()) navigate('/')
+		else if(!activeUserID) navigate('/chooseUser')
 	}, [activeUserID, users])
 
 	const createNewUser = (username: string) => {

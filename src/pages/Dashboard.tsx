@@ -4,9 +4,7 @@ const Dashboard = () => {
 	const { activeUserID } = useGameContext()
 
 	return (
-		<div>
-			<h1>Dahboard: {activeUserID}</h1>
-		</div>
+		<h1>Hfeuijhviuh</h1>
 	)
 }
 

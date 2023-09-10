@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import HelloToNewUser from './pages/HelloToNewUser'
 import { useThemeContext } from './hooks/contextHooks/useThemeContext'
-import SvaedUsers from './pages/chooseUser'
+import ChooseUser from './pages/ChooseUser'
 import { isAnyUserInLocalStoarge } from './utilities/isAnyUserInLocalStoarge'
 import CreateUsernameContextProvider from './contexts/UsernameContext/CreateUsernameContextProvider'
+import Dashboard from './pages/Dashboard'
 
 function App() {
 	const { theme } = useThemeContext()
@@ -15,7 +16,7 @@ function App() {
 					path="/"
 					element={
 						isAnyUserInLocalStoarge() ? (
-							<SvaedUsers />
+							<Dashboard />
 						) : (
 							<CreateUsernameContextProvider>
 								<HelloToNewUser />
@@ -23,7 +24,7 @@ function App() {
 						)
 					}
 				/>
-				<Route path="/chooseUser" element={<SvaedUsers />} />
+				<Route path="/chooseUser" element={<ChooseUser />} />
 			</Routes>
 		</div>
 	)
